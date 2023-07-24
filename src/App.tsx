@@ -6,7 +6,6 @@ import { RootState } from "./store/store";
 const App = () => {
   const dispatch = useDispatch();
   const totalItems = useSelector((state: RootState) => state.cart);
-  console.log("get total items", totalItems);
   const addItem = (value: string) => {
     dispatch(add(value));
   };
