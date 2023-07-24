@@ -8,7 +8,6 @@ const App = () => {
   const totalItems = useSelector((state: RootState) => state.cart);
   console.log("get total items", totalItems);
   const addItem = (value: string) => {
-    console.log(value);
     dispatch(add(value));
   };
   return (
