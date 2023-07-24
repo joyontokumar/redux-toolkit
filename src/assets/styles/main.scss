@@ -1,0 +1,11 @@
+// tailwind css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+// base css
+@import "./base/variables";
+@import "./base/typhography";
+
+// constants
+@import "./constants/constants";
