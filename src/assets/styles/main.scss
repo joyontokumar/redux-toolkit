@@ -3,9 +3,18 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .button {
+    @apply px-2 py-2 font-medium bg-red text-white rounded-cardM shadow-sm tracking-wide;
+  }
+  .button-action {
+    @apply bg-midnight hover:bg-red hover:text-white;
+  }
+}
 // base css
 @import "./base/variables";
 @import "./base/typhography";
+@import "./base/button";
 
 // constants
 @import "./constants/constants";

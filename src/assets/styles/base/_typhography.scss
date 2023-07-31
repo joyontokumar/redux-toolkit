@@ -1,6 +1,6 @@
 html,
 body {
-  color: $themeTextColor;
+  color: $themeColor;
   font-size: $themeFontSize;
   line-height: $themeLineHeight;
   font-weight: $fontWeightRegular;
@@ -21,7 +21,7 @@ img {
 
 p {
   margin: 0;
-  color: $themeTextColor;
+  color: $themeColor;
   font-size: $themeFontSize;
 }
 
@@ -122,6 +122,13 @@ input::-webkit-inner-spin-button {
   outline: none;
   margin-right: 5px;
 }
+
+.form-control:focus {
+  background-color: $whiteBgColor;
+  outline: 0;
+  box-shadow: none;
+}
+
 input:focus {
   outline: 0;
   box-shadow: none;
@@ -132,12 +139,16 @@ textarea:focus {
   border: 1px solid transparent !important;
   box-shadow: none;
   border-radius: 0 !important;
+  outline-color: $primaryTextColor !important;
 }
 
 blockquote {
   padding: 25px 35px;
   margin-left: 30px;
   margin: 30px 0 30px 30px;
+  -webkit-box-shadow: -5px 0 $primaryTextColor;
+  -ms-box-shadow: -5px 0 $primaryTextColor;
+  box-shadow: -5px 0 $primaryTextColor;
 }
 
 blockquote p:last-child {
@@ -145,7 +156,7 @@ blockquote p:last-child {
   margin-bottom: 0;
 }
 
-@keyframes autofill {
+@-webkit-keyframes autofill {
   to {
     color: inherit;
     background: transparent;
@@ -161,11 +172,74 @@ input {
     color: #666;
   }
 }
-
+.primary-border-color {
+  border: 1px solid $primaryBorderColor;
+}
+.primary-border-radius {
+  border-radius: $themeRadius;
+}
 input:-webkit-autofill {
   -webkit-animation-name: autofill;
   -webkit-animation-fill-mode: both;
 }
 select:disabled {
-  background: $selectDisabledBg;
+  background: #cccccc70 !important;
+}
+.section-padding {
+  padding: 60px 0;
+}
+.dark-bg-color {
+  background-color: $darkBgColor;
+}
+.theme-transparent-bg {
+  background-color: $themeBgColor;
+}
+.form-field-bg {
+  background: $formFieldBg;
+}
+.form-field-color {
+  color: $formFieldColor;
+}
+
+.primary-border-radius {
+  border-radius: $primaryRadius;
+}
+
+.primary-box-shadow {
+  box-shadow: $primaryBoxShadow;
+}
+.primary-card-padding {
+  padding: $primaryCardPadding;
+}
+svg {
+  display: inline-block;
+}
+button[disabled] {
+  cursor: no-drop;
+  background: $disabledBtn;
+}
+
+input:-internal-autofill-selected {
+  background-color: rgb(255, 255, 255) !important;
+  background-image: none !important;
+}
+
+input:-webkit-autofill {
+  background-color: rgb(255, 255, 255) !important;
+  background-image: none !important;
+}
+.info-bg-color {
+  background-color: $infoColor;
+}
+.info-text-color {
+  color: $infoColor;
+}
+.white-bg {
+  background-color: $whiteBgColor;
+}
+.white-text {
+  color: $whiteTextColor;
+}
+.theme-color {
+  color: $themeColor;
 }

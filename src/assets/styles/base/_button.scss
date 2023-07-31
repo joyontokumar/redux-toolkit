@@ -1,0 +1,88 @@
+@import "./variables";
+
+.primary-btn {
+  padding: 5px 10px;
+  border-radius: $primaryBtnRadius;
+  font-weight: $fontWeightSemiBold;
+  color: $whiteTextColor;
+  font-size: $primaryBtnFontSize;
+  background-color: $primaryBgColor;
+  border-radius: $primaryBtnRadius;
+  font-family: $primaryFont;
+  border: none;
+  line-height: 30px !important;
+}
+
+.primary-transparent-btn {
+  padding: 5px 10px;
+  font-weight: $fontWeightSemiBold;
+  color: $themeColor;
+  font-size: 14px;
+  background-color: $primaryTransparentBgColor;
+  border-radius: $primaryBtnRadius;
+  font-family: $primaryFont;
+  border: none;
+}
+
+.secondary-btn {
+  padding: 5px 20px;
+  font-weight: $fontWeightSemiBold;
+  color: $whiteTextColor;
+  font-size: $secondaryBtnFontSize;
+  background-color: $primaryBgColor;
+  border-radius: $secondaryBtnRadius;
+  font-family: $primaryFont;
+  border: none;
+}
+.secondary-transparent-btn {
+  padding: 5px 20px;
+  font-weight: $fontWeightSemiBold;
+  color: $blackTextColor;
+  font-size: $secondaryBtnFontSize;
+  background-color: transparent;
+  border-radius: $secondaryBtnRadius;
+  font-family: $primaryFont;
+  border: 1px solid $primaryTextColor;
+}
+// .bangla-btn {
+//   border: none;
+//   background-color: $whiteBgColor;
+//   color: $primaryTextColor;
+//   padding: 0 4px;
+//   border-top-left-radius: 4px;
+//   border-bottom-left-radius: 4px;
+//   font-size: 12px;
+// }
+.primary-language-btn {
+  background-color: $primaryTextColor;
+  color: $whiteTextColor;
+  padding: 0 4px;
+  font-size: 12px;
+}
+.secondary-language-btn {
+  background-color: $whiteBgColor;
+  color: $primaryTextColor;
+  padding: 0 4px;
+  font-size: 12px;
+}
+// .bangla-btn {
+//   border: none;
+//   background-color: $whiteBgColor;
+//   color: $primaryTextColor;
+//   padding: 0 4px;
+//   border-top-left-radius: 4px;
+//   border-bottom-left-radius: 4px;
+//   font-size: 12px;
+// }
+.primary-language-btn {
+  background-color: $primaryTextColor;
+  color: $whiteTextColor;
+  padding: 0 4px;
+  font-size: 12px;
+}
+.secondary-language-btn {
+  background-color: $whiteBgColor;
+  color: $primaryTextColor;
+  padding: 0 4px;
+  font-size: 12px;
+}

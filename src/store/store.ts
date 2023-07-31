@@ -1,5 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import cartSlice from "./cartSlice";
+import colorSlice from "./colorSlices";
 import storage from "redux-persist/lib/storage";
 import { combineReducers } from "redux";
 import {
@@ -14,6 +15,7 @@ import {
 } from "redux-persist";
 const rootReducer = combineReducers({
   cart: cartSlice,
+  switcher: colorSlice,
 });
 const persistConfig = {
   key: "root",
