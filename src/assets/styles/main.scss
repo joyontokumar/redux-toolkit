@@ -18,3 +18,40 @@
 
 // constants
 @import "./constants/constants";
+
+.heading {
+  background-color: #ddd;
+  padding: 10px;
+  cursor: pointer;
+}
+.heading h3 {
+  font-size: 18px;
+}
+.active {
+  visibility: visible;
+  opacity: 1;
+  background-color: #f7f7f7;
+}
+.no-content {
+  background-color: #f7f7f7;
+  overflow: hidden;
+}
+.content {
+  visibility: hidden;
+  overflow: hidden;
+  opacity: 0;
+  transition: all 0.3s linear;
+  background-color: #f7f7f7;
+  max-height: 0;
+  transition: all 0.3s linear;
+}
+.content.active {
+  overflow: visible !important;
+  height: auto;
+  opacity: 1;
+  max-height: 100px;
+  visibility: visible;
+}
+.inner-content {
+  padding: 20px 15px;
+}
