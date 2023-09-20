@@ -1,10 +1,45 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const Accordion = () => {
   const [activePanel, setActivePanel] = useState("");
+  const [getExp, setExp] = useState<any>([]);
   const toggleChange = (panelId: any) => {
     setActivePanel(panelId === activePanel ? "" : panelId);
   };
+  useEffect(() => {
+    setExp([
+      {
+        start_date: "2018-02-03",
+        end_date: "2018-09-02",
+      },
+      {
+        start_date: "2019-02-03",
+        end_date: "2020-09-02",
+      },
+      {
+        start_date: "2021-02-03",
+        end_date: null,
+      },
+    ]);
+  }, []);
+
+  useEffect(() => {
+    if (getExp?.length > 0) {
+      const newExp = getExp?.map((e: any) => {
+        const startDate = new Date(e.start_date);
+        const endDate = e.end_date !== null ? new Date(e.end_date) : new Date();
+        const monthsDifference =
+          (endDate.getFullYear() - startDate.getFullYear()) * 12 +
+          (endDate.getMonth() - startDate.getMonth());
+        return {
+          start_date: startDate.toISOString(),
+          end_date: endDate.toISOString(),
+          total_month: monthsDifference,
+        };
+      });
+      console.log("get total exp", newExp);
+    }
+  }, [getExp]);
 
   return (
     <div className="mt-5 p-5">
@@ -67,6 +102,7 @@ const Accordion = () => {
           </div>
         </div>
       </div>
+      <div className="total-year-experience">Total:0</div>
     </div>
   );
 };

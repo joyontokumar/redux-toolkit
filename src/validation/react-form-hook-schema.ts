@@ -7,3 +7,11 @@ export const reactFormHookSchema = () => {
     language: Yup.string().required("language name is required"),
   });
 };
+const WeirdExpressions = [
+  "a othoba b",
+  "b ebong c othoba d",
+  "ebong ebong othoba othoba ebong",
+  "((ebong) othoba ebong) ebong othoba",
+  "(ebong othoba (ebong ebong ((othoba)othoba(ebong)))",
+  "ebong",
+];
