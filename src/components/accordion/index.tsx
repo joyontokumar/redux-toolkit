@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 const Accordion = () => {
   const [activePanel, setActivePanel] = useState("");
   const [getExp, setExp] = useState<any>([]);
+  const [totalExp, setTotalExp] = useState<any>(0);
   const toggleChange = (panelId: any) => {
     setActivePanel(panelId === activePanel ? "" : panelId);
   };
@@ -25,7 +26,7 @@ const Accordion = () => {
 
   useEffect(() => {
     if (getExp?.length > 0) {
-      const newExp = getExp?.map((e: any) => {
+      const newExp: any = getExp?.map((e: any) => {
         const startDate = new Date(e.start_date);
         const endDate = e.end_date !== null ? new Date(e.end_date) : new Date();
         const monthsDifference =
@@ -37,7 +38,11 @@ const Accordion = () => {
           total_month: monthsDifference,
         };
       });
-      console.log("get total exp", newExp);
+      const totalMonths = newExp?.reduce(
+        (total: number, item: any) => total + item?.total_month,
+        0
+      );
+      setTotalExp(Math.floor(totalMonths / 12));
     }
   }, [getExp]);
 
@@ -102,7 +107,9 @@ const Accordion = () => {
           </div>
         </div>
       </div>
-      <div className="total-year-experience">Total:0</div>
+      <div className="total-year-experience">
+        Total:{totalExp > 5 ? `${totalExp}+` : totalExp}
+      </div>
     </div>
   );
 };
