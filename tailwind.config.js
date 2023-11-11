@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./src/**/*.{js,jsx,ts,tsx}"],
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   darkMode: false,
   theme: {
     colors: {
@@ -9,6 +9,15 @@ module.exports = {
       black: "#000",
       horizontal: "#ddd",
       metal: "#565584",
+      container: {
+        padding: {
+          DEFAULT: "15px",
+          sm: "30px",
+          lg: "30px",
+          xl: "15px",
+          "2xl": "15px",
+        },
+      },
       primary: {
         dark: "#000",
         gray: "#ddd",

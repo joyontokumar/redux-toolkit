@@ -1,7 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
 import cartSlice from "./cartSlice";
 import colorSlice from "./colorSlices";
+import rememberSlice from "./rememberSlice";
 import storage from "redux-persist/lib/storage";
+import sessionStorage from "redux-persist/lib/storage/session";
 import { combineReducers } from "redux";
 import {
   persistStore,
@@ -14,15 +16,23 @@ import {
   REGISTER,
 } from "redux-persist";
 const rootReducer = combineReducers({
+  remember: rememberSlice,
   cart: cartSlice,
   switcher: colorSlice,
 });
-const persistConfig = {
+const createPersistConfig = (rememberMe: boolean) => ({
   key: "root",
-  storage,
+  storage: rememberMe === true ? storage : sessionStorage,
+});
+const createPersistedReducer = (rememberMe: any) => {
+  const persistConfig = createPersistConfig(rememberMe);
+  return persistReducer(persistConfig, rootReducer);
 };
-const persistedReducer = persistReducer(persistConfig, rootReducer);
-export const store = configureStore({
+const initialPersistConfig = createPersistConfig(false);
+console.log("get initalPersistConfig", initialPersistConfig);
+const persistedReducer = createPersistedReducer(initialPersistConfig);
+
+export const store: any = configureStore({
   reducer: persistedReducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
@@ -32,4 +42,4 @@ export const store = configureStore({
     }),
 });
 export type RootState = ReturnType<typeof rootReducer>;
-export const persistor = persistStore(store);
+export const persistor: any = persistStore(store);
