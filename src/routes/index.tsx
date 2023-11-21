@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import React, { Suspense, useEffect } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "../pages/Home";
 import Posts from "../pages/post";
@@ -17,7 +17,15 @@ const FetchComponent = React.lazy(
   () => import("../components/customHook/dataFetchComponent")
 );
 const AllRoutes = () => {
-  const { remembermeInfo } = useSelector((state: any) => state.remember);
+  let userInfo = useSelector((state: any) => state?.user);
+  console.log("get state", userInfo);
+  // console.log("storageType", storageType.token);
+  // useEffect(() => {
+  //   if (localStorage) {
+  //     console.log("remove session storage");
+  //     sessionStorage.removeItem("persist:root");
+  //   }
+  // }, []);
   return (
     <BrowserRouter>
       <Suspense fallback={<LoadingComponent />}>
@@ -30,7 +38,8 @@ const AllRoutes = () => {
           <Route path="/formik" element={<FormikValidationForm />} />
           <Route path="/usereducer" element={<UserReducerComponent />} />
           <Route path="/data-fetch" element={<FetchComponent />} />
-          {remembermeInfo && <Route path="/cv" element={<CVFomar />} />}
+          {userInfo.token !== "" && <Route path="/cv" element={<CVFomar />} />}
+
           <Route path="/face-detect" element={<FaceDetect />} />
           <Route path="/use-ref" element={<UseRefComponent />} />
           <Route path="*" element={<NotFound />} />

@@ -1,20 +1,25 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { rememberMe } from "../../store/rememberSlice";
-import storage from "redux-persist/lib/storage";
-import sessionStorage from "redux-persist/lib/storage/session";
+import { useDispatch } from "react-redux";
+import { registeredUserInfo } from "../../store/userSlice";
+import sessionStorage from "redux-persist/es/storage/session";
+import localStorage from "redux-persist/es/storage";
+import { createStore } from "../../store/store";
 import { useNavigate } from "react-router-dom";
-import { persistor } from "../../store/store";
 const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { remembermeInfo } = useSelector((state: any) => state.remember);
-  const [rememberMeState, setRememberMe] = useState(remembermeInfo);
-  const changeMenu = () => {
-    dispatch(rememberMe(rememberMeState));
-    if (rememberMeState) {
+
+  const [checkedValue, setCheckedValue] = useState<any>(undefined);
+  const submitHandler = () => {
+    if (checkedValue) {
+      dispatch(registeredUserInfo("fsdfsdfsdfsdfsdfsdfsdf"));
+      createStore("localStorage");
+      sessionStorage.removeItem("persist:root");
       navigate("/cv");
     } else {
+      dispatch(registeredUserInfo("fsdfsdfsdfsdfsdfsdfsdf"));
+      createStore("sessionStorage");
+      localStorage.removeItem("persist:root");
       navigate("/cv");
     }
   };
@@ -25,18 +30,12 @@ const Login = () => {
         <div className="grid grid-cols-1 gap-4">
           <div className="login-page-inner">
             <div className="grid grid-cols-1 gap-4">
-              <span>
-                Default remember me : {remembermeInfo === true ? "YES" : "NO"}
-              </span>
-            </div>
-            <div className="grid grid-cols-1 gap-4">
               <div className="single-field">
                 <input
                   type="checkbox"
                   id="vehicle1"
-                  checked={rememberMeState}
                   onChange={(e: any) => {
-                    setRememberMe(e?.target?.checked);
+                    setCheckedValue(e?.target?.checked);
                   }}
                 />
                 <label htmlFor="vehicle1"> I have a bike</label>
@@ -44,7 +43,7 @@ const Login = () => {
             </div>
             <div className="grid grid-cols-1 gap-4">
               <div className="single-field">
-                <button onClick={changeMenu} className="primary-btn w-full">
+                <button className="primary-btn w-full" onClick={submitHandler}>
                   Submit
                 </button>
               </div>
@@ -55,5 +54,4 @@ const Login = () => {
     </div>
   );
 };
-
 export default Login;

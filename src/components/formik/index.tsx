@@ -15,6 +15,10 @@ const FormikValidationForm = () => {
   //   console.log("get values", values);
   // };
 
+  const addsessionstorage = () => {
+    window.sessionStorage.setItem("abc", "joyonto kumar roy");
+  };
+
   return (
     <div className="formik-form">
       <div className="container">
@@ -60,6 +64,7 @@ const FormikValidationForm = () => {
           </Form>
         </Formik>
       </div>
+      <button onClick={addsessionstorage}>save data session storage</button>
     </div>
   );
 };
