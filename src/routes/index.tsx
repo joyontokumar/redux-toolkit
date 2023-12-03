@@ -11,6 +11,7 @@ import LoadingComponent from "../components/loading";
 import FaceDetect from "../components/face-detect";
 import CVFomar from "../components/cv-format";
 import Login from "../components/login";
+import ReactCalender from "../react-calender/index";
 import NotFound from "../components/not-found";
 import { useSelector } from "react-redux";
 const FetchComponent = React.lazy(
@@ -38,6 +39,8 @@ const AllRoutes = () => {
           <Route path="/formik" element={<FormikValidationForm />} />
           <Route path="/usereducer" element={<UserReducerComponent />} />
           <Route path="/data-fetch" element={<FetchComponent />} />
+          <Route path="/calender" element={<ReactCalender />} />
+
           {userInfo.token !== "" && <Route path="/cv" element={<CVFomar />} />}
 
           <Route path="/face-detect" element={<FaceDetect />} />
